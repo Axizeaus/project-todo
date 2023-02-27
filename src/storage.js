@@ -19,27 +19,19 @@ function getFromLocal(key){
   return JSON.parse(localStorage.getItem(key));
 }
 
+export function addProject(projectName){
+  localStorage.setItem(projectName, addToLocal([]))
+}
+
+export function getProject(projectName){
+  return getFromLocal(projectName);
+}
+
 export function addTodoBase(data){
   let baseProject = getTodoBase();
   baseProject.push(data);
   localStorage.setItem('base', addToLocal(baseProject))
   console.log(baseProject.length);
-}
-
-export function addProject(projectName){
-  localStorage.setItem(projectName, addToLocal([]))
-}
-
-export function addTodoProject(projectName,data){
-  let project = getProject(projectName);
-  project.push(data);
-  localStorage.setItem(projectName, addToLocal(project));
-  console.log(project);
-}
-
-export function getProject(projectName){
-  let project = getFromLocal(projectName);
-  return project;
 }
 
 export function getTodoBase(){
@@ -49,4 +41,19 @@ export function getTodoBase(){
     baseProject = getFromLocal('base');
   }
   return baseProject;
+}
+
+export function addTodoProject(projectName,data){
+  let project = getProject(projectName);
+  project.push(data);
+  localStorage.setItem(projectName, addToLocal(project));
+  console.log(project);
+}
+
+export function removeProject(projectName){
+  let project = getFromLocal(projectName);
+  if (project === null){
+    return;
+  }
+  localStorage.removeItem(projectName);
 }

@@ -1,21 +1,21 @@
 import { Todo } from "./todo";
-import { addTodoBase, addProject, addTodoProject, removeProject } from "./storage";
+import { addProject, addTodoProject, removeProject, removeTodo } from "./storage";
 
 const todo = new Todo('to eat', 'eating', 'max');
 const todo2 = new Todo('to sleep', 'sleeping', 'max');
 localStorage.clear();
-addTodoBase(todo);
-addTodoBase(todo2);
+addTodoProject('base',todo);
+console.log(localStorage);
+addTodoProject('base',todo2);
+console.log(localStorage);
 addProject('coding');
+console.log(localStorage);
 addTodoProject('coding','crying');
+console.log(localStorage);
 addTodoProject('coding','sleeping');
+console.log(localStorage);
 addTodoProject('coding','running away');
-addTodoProject('coding','hiding');
-
 console.log(localStorage);
-
-removeProject('coding');
-
-console.log(localStorage);
+addTodoProject('coding','hiding');console.log(localStorage);
+removeTodo('coding', 0);console.log(localStorage);
 // localStorage.clear();
-// console.log(localStorage);

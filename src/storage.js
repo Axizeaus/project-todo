@@ -45,9 +45,11 @@ export function getTodoBase(){
 
 export function addTodoProject(projectName,data){
   let project = getProject(projectName);
+  if (projectName === 'base') {
+    project = getTodoBase(projectName);
+  }
   project.push(data);
-  localStorage.setItem(projectName, addToLocal(project));
-  console.log(project);
+  updateTodo(projectName, project);
 }
 
 export function removeProject(projectName){
@@ -56,4 +58,14 @@ export function removeProject(projectName){
     return;
   }
   localStorage.removeItem(projectName);
+}
+
+export function removeTodo(projectName, itemIndex){
+  let project = getFromLocal(projectName);
+  project.splice(itemIndex, 1);
+  updateTodo(projectName, project);
+}
+
+function updateTodo(projectName, newData){
+  localStorage.setItem(projectName, addToLocal(newData))
 }

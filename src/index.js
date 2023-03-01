@@ -1,21 +1,16 @@
 import { Todo } from "./todo";
-import { addProject, addTodoProject, removeProject, removeTodo } from "./storage";
 
-const todo = new Todo('to eat', 'eating', 'max');
-const todo2 = new Todo('to sleep', 'sleeping', 'max');
+let todo = new Todo('learning syntex', 'a project for coding practice', 'max', 'coding');
+let todo2 = new Todo('sleeping', 'a process to recharge', 'max');
+
 localStorage.clear();
-addTodoProject('base',todo);
+todo.createProject();
+todo2.createProject();
+console.log(todo.readProject());
+console.log(todo2.readProject());
+console.log(todo.readTodoBase());
+console.log(todo2.readTodoBase());
+todo.deleteProject('coding');
+todo2.deleteProject('base');
 console.log(localStorage);
-addTodoProject('base',todo2);
-console.log(localStorage);
-addProject('coding');
-console.log(localStorage);
-addTodoProject('coding','crying');
-console.log(localStorage);
-addTodoProject('coding','sleeping');
-console.log(localStorage);
-addTodoProject('coding','running away');
-console.log(localStorage);
-addTodoProject('coding','hiding');console.log(localStorage);
-removeTodo('coding', 0);console.log(localStorage);
 // localStorage.clear();

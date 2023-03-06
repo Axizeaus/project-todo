@@ -1,49 +1,23 @@
-import { 
-    addProject,
-    getTodoBase, 
-    getProject, 
-    addTodoProject, 
-    removeTodo, 
-    removeProject } from "./storage";
-
-export class Todo{
-  constructor(title, description, priority, project='base'){
+class Todo{
+  constructor(title, description){
     this.title = title;
     this.description = description;
-    // this.dueDate = dueDate;
-    this.priority = priority;
-    this.project = project;
   }
 
-  createProject(newName){
-    if((this.project !== 'base') || (!newName)){
-      addProject(this.project);
-    } else {
-      addProject(newName);
-    }
+  createTodo(){
+
   }
 
-  createTodo(projectName,data){
-    
+  readTodo(){
+
   }
 
-  readProject(projectName){
-    if(this.project === 'base'){
-      return getProject('base')
-    } else if (projectName){
-      return getProject(projectName)
-    }
+  updateTodo(){
+
   }
 
-  readTodoBase(){
-    return getTodoBase();
+  deleteTodo(){
+
   }
-
-  deleteProject(projectName){
-    if(this.project !== 'base'){
-      removeProject(projectName)
-    }
-  }
-
-
+  
 }

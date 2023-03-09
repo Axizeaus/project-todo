@@ -12,5 +12,5 @@ function getFromLocal(key){
 }
 
 export function createTodo(data){
-  
+  console.log(data);
 }
